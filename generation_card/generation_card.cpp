@@ -91,3 +91,41 @@ void DellCard(int Card[36][2])
         Card[n-1][0] = 0;
         Card[n-1][1] = 0;
 }
+
+/*
+int main()
+{
+    system("chcp 1251");
+    srand(time(NULL));
+    int Card[36][2];
+    int HandPlayer[4][2];
+    int HandBot[4][2];
+    Clear();
+    Menu();
+    Clear();
+    GenerationCard(Card);
+    PrintCard(Card);
+    Continue();
+    Clear();
+    RandCard(Card);
+    PrintCard(Card);
+    Continue();
+    DistOfCard(Card, HandPlayer, 4);
+    PrintCardHand(HandPlayer);
+    DellCard(Card);
+    DellCard(Card);
+    DellCard(Card);
+    DellCard(Card);
+    Continue();
+    DistOfCard(Card, HandBot, 4);
+    PrintCardHand(HandBot);
+    DellCard(Card);
+    DellCard(Card);
+    DellCard(Card);
+    DellCard(Card);
+    Continue();
+    PrintCard(Card);
+    Continue();
+    return 0;
+}
+*/

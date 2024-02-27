@@ -1,6 +1,6 @@
 #pragma once
 void Clear();
-void  Continue();
+void Continue();
 void Menu();
 void PrintCard(int Card[36][2]);
 void PrintCardHand(int HandPlayer[4][2]);
