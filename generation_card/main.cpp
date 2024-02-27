@@ -97,14 +97,14 @@ void IdentCard(int turnM, int turnC)
     }
 }
 
-void EnemyTurn(int HandBot)
+void EnemyTurn(int HandBot[4][2])
 {
 
 }
 
-int *MyTurn(int HandPlayer[4][2])
+int MyTurn(int HandPlayer[4][2], int HandBot[4][2])
 {
-    int choice[1];
+    int choice[2];
     
     int turnM = 0;
     int turnC = 0;
@@ -118,7 +118,10 @@ int *MyTurn(int HandPlayer[4][2])
     choice[0] = turnM;
     choice[1] = turnC;
 
-    return choice;
+    if ((choice[0] == HandBot[0][0] || choice[0] == HandBot[1][0] || choice[0] == HandBot[2][0] || choice[0] == HandBot[3][0]) && (choice[1] == HandBot[0][1] || choice[1] == HandBot[1][1] || choice[1] == HandBot[2][1] || choice[1] == HandBot[3][1]))
+        return 1;
+    else
+        return 0;
 }
 
 void Game(int Card[36][2], int HandPlayer[4][2], int HandBot[4][2])
@@ -137,7 +140,7 @@ void Game(int Card[36][2], int HandPlayer[4][2], int HandBot[4][2])
     
     DistOfCard(Card, HandBot, 4);
     
-    printf("\nВаши карты: ");
+    printf("\nВаши карты: \n");
     
     PrintCardHand(HandPlayer);
 
@@ -149,12 +152,13 @@ void Game(int Card[36][2], int HandPlayer[4][2], int HandBot[4][2])
 
         case 0:
             
-            EnemyTurn();
+            int result = MyTurn(HandBot, HandPlayer);
 
         case 1:
            
-           int *Choice = MyTurn(HandPlayer);
-           
+            int result = MyTurn(HandPlayer, HandBot);
+            if (result == 1)
+                PlayerTurn = 1;
 
         }
     }
@@ -173,7 +177,7 @@ int main()
     Clear();
     GenerationCard(Card);
     RandCard(Card);
-    //Game(Card, HandPlayer, HandBot);
+    Game(Card, HandPlayer, HandBot);
 
     return 0;
 }
