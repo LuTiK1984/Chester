@@ -199,8 +199,8 @@ void Game(int Card[36][2], int HandPlayer[36][2], int HandBot[36][2])
         int result;
         int MyHandCount;
         int choice[2];
-        int turnM = 0;
-        int turnC = 0;
+        int turnM;
+        int turnC;
 
         case 0:
             
