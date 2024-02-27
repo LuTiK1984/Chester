@@ -231,7 +231,7 @@ void Game(int Card[36][2], int HandPlayer[36][2], int HandBot[36][2])
 
                 for (int i = 0; i < 36; i++)
                 {
-                    if ((HandBot[i][0] == 0) && (HandBot[i][1] == 0))
+                    if ((HandBot[i][0] <= 0) && (HandBot[i][1] <= 0))
                     {
                         HandBot[i][0] = choice[0];
                         HandBot[i][1] = choice[1];
