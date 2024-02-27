@@ -31,10 +31,10 @@ void PrintCard(int Card[36][2])
 
 void PrintCardHand(int HandPlayer[36][2])
 {
-    int n = 4;
     for (int i = 0; i < n; i++)
     {
-        printf("%i %i\n", HandPlayer[i][0], HandPlayer[i][1]);
+        if ((HandPlayer[i][0] != 0)&& (HandPlayer[i][1] != 0))
+            printf("%i %i\n", HandPlayer[i][0], HandPlayer[i][1]);
     }
 }
 

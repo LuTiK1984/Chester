@@ -219,6 +219,25 @@ void Game(int Card[36][2], int HandPlayer[36][2], int HandBot[36][2])
             {
                 PlayerTurn = 0;
 
+                for (int i = 0; i < 36; i++)
+                {
+                    if ((choice[0] == HandPlayer[i][0]) && (choice[1] == HandPlayer[i][1]))
+                    {
+                        HandPlayer[i][0] = 0;
+                        HandPlayer[i][1] = 0;
+                        break;
+                    }
+                }
+
+                for (int i = 0; i < 36; i++)
+                {
+                    if ((HandBot[i][0] == 0) && (HandBot[i][1] == 0))
+                    {
+                        HandBot[i][0] = choice[0];
+                        HandBot[i][1] = choice[1];
+                    }
+                }
+
             }
 
             else
@@ -255,6 +274,25 @@ void Game(int Card[36][2], int HandPlayer[36][2], int HandBot[36][2])
             if (result == 1)
             { 
                 PlayerTurn = 1;
+
+                for (int i = 0; i < 36; i++)
+                {
+                    if ((choice[0] == HandBot[i][0]) && (choice[1] == HandBot[i][1]))
+                    {
+                        HandBot[i][0] = 0;
+                        HandBot[i][1] = 0;
+                        break;
+                    }
+                }
+
+                for (int i = 0; i < 36; i++)
+                {
+                    if ((HandPlayer[i][0] == 0) && (HandPlayer[i][1] == 0))
+                    {
+                        HandPlayer[i][0] = choice[0];
+                        HandPlayer[i][1] = choice[1];
+                    }
+                }
 
             }
 
