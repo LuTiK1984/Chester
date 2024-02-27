@@ -186,9 +186,6 @@ void Game(int Card[36][2], int HandPlayer[36][2], int HandBot[36][2])
     for (int i = 0; i < 5; i++)
         DellCard(Card);
     
-    printf("\nВаши карты: \n");
-    
-    PrintCardHand(HandPlayer);
 
     int PlayerTurn = rand() % 2;
 
@@ -203,6 +200,9 @@ void Game(int Card[36][2], int HandPlayer[36][2], int HandBot[36][2])
         int turnC;
 
         case 0:
+    printf("\nВаши карты: \n");
+    
+    PrintCardHand(HandPlayer);
             
             printf("\n\nХодит ваш противник!");
 
@@ -260,6 +260,8 @@ void Game(int Card[36][2], int HandPlayer[36][2], int HandBot[36][2])
 
         case 1:
            
+                printf("\nВаши карты: \n");
+                PrintCardHand(HandPlayer);
             printf("\n\nВаш ход! Выберите масть (введите от 1 до 4 - Черви, Пики, Крести, Буби) \nи карту (от 6 до 10 или 11 - валет, 12-Дама, 13- Король, 14 - Туз): ");
 
             scanf_s("%i %i", &turnM, &turnC);
@@ -309,8 +311,6 @@ void Game(int Card[36][2], int HandPlayer[36][2], int HandBot[36][2])
                 for (int i = 0; i <= lesscards; i++)
                     DellCard(Card);
             }
-                printf("\nВаши карты: \n");
-                PrintCardHand(HandPlayer);
                 
                 break;
         }
