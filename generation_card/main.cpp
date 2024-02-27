@@ -142,7 +142,7 @@ int CountCards(int HandPlayer[36][2])
     int n = 0;
     for (int i = 0; i < 36; i++)
     {
-        if ((HandPlayer[i][0] != 0) && (HandPlayer[i][1] != 0))
+        if ((HandPlayer[i][0] > 0) && (HandPlayer[i][1] > 0))
             n += 1;
         else
             break;
