@@ -156,20 +156,8 @@ void EnemyTurn(int HandBot[36][2])
 
 }
 
-int MyTurn(int HandPlayer[36][2], int HandBot[36][2])
+int MyTurn(int choice[2], int HandBot[36][2])
 {
-    int choice[2];
-    
-    int turnM = 0;
-    int turnC = 0;
-    
-    scanf_s("%i %i", &turnM, &turnC);
-
-    IdentCard(turnM, turnC);
-
-    choice[0] = turnM;
-    choice[1] = turnC;
-
     if ((choice[0] == HandBot[0][0] || choice[0] == HandBot[1][0] || choice[0] == HandBot[2][0] || choice[0] == HandBot[3][0]) && (choice[1] == HandBot[0][1] || choice[1] == HandBot[1][1] || choice[1] == HandBot[2][1] || choice[1] == HandBot[3][1]))
         return 1;
     else
@@ -189,8 +177,14 @@ void Game(int Card[36][2], int HandPlayer[36][2], int HandBot[36][2])
     Clear();
     
     DistOfCard(Card, HandPlayer, 4);
+
+    for (int i = 0; i < 5; i++)
+        DellCard(Card);
     
     DistOfCard(Card, HandBot, 4);
+
+    for (int i = 0; i < 5; i++)
+        DellCard(Card);
     
     printf("\nВаши карты: \n");
     
@@ -204,13 +198,28 @@ void Game(int Card[36][2], int HandPlayer[36][2], int HandBot[36][2])
         {
         int result;
         int MyHandCount;
+        int choice[2];
+        int turnM = 0;
+        int turnC = 0;
+
         case 0:
             
             printf("\n\nХодит ваш противник!");
 
-            result = MyTurn(HandBot, HandPlayer);
-            if (result == 1)
+            scanf_s("%i %i", &turnM, &turnC);
+
+            IdentCard(turnM, turnC);
+
+            choice[0] = turnM;
+            choice[1] = turnC;
+           
+            result = MyTurn(choice, HandPlayer);
+            
+            if (result > 0)
+            {
                 PlayerTurn = 0;
+            }
+
             else
                 PlayerTurn = 1;
             MyHandCount = CountCards(HandBot);
@@ -235,8 +244,13 @@ void Game(int Card[36][2], int HandPlayer[36][2], int HandBot[36][2])
 
 
             result = MyTurn(HandPlayer, HandBot);
-            if (result == 1)
+            
+            if (result > 0)
+            { 
                 PlayerTurn = 1;
+
+            }
+
             else
                 PlayerTurn = 0;
 
