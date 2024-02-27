@@ -215,9 +215,10 @@ void Game(int Card[36][2], int HandPlayer[36][2], int HandBot[36][2])
            
             result = MyTurn(choice, HandPlayer);
             
-            if (result > 0)
+            if (result == 1)
             {
                 PlayerTurn = 0;
+
             }
 
             else
@@ -242,10 +243,16 @@ void Game(int Card[36][2], int HandPlayer[36][2], int HandBot[36][2])
            
             printf("\n\nВаш ход! Выберите масть (введите от 1 до 4 - Черви, Пики, Крести, Буби) \nи карту (от 6 до 10 или 11 - валет, 12-Дама, 13- Король, 14 - Туз): ");
 
+            scanf_s("%i %i", &turnM, &turnC);
 
-            result = MyTurn(HandPlayer, HandBot);
+            IdentCard(turnM, turnC);
+
+            choice[0] = turnM;
+            choice[1] = turnC;
+
+            result = MyTurn(choice, HandBot);
             
-            if (result > 0)
+            if (result == 1)
             { 
                 PlayerTurn = 1;
 
