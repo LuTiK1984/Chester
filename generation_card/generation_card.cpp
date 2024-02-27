@@ -31,7 +31,7 @@ void PrintCard(int Card[36][2])
 
 void PrintCardHand(int HandPlayer[36][2])
 {
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < 36; i++)
     {
         if ((HandPlayer[i][0] != 0)&& (HandPlayer[i][1] != 0))
             printf("%i %i\n", HandPlayer[i][0], HandPlayer[i][1]);
