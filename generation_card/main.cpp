@@ -153,13 +153,18 @@ void Game(int Card[36][2], int HandPlayer[4][2], int HandBot[4][2])
         case 0:
             
             int result = MyTurn(HandBot, HandPlayer);
+            if (result == 1)
+                PlayerTurn = 0;
+            else
+                PlayerTurn = 1;
 
         case 1:
            
             int result = MyTurn(HandPlayer, HandBot);
             if (result == 1)
                 PlayerTurn = 1;
-
+            else
+                PlayerTurn = 0;
         }
     }
 }
