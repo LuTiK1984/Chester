@@ -222,13 +222,12 @@ void Game(int Card[36][2], int HandPlayer[36][2], int HandBot[36][2])
 
                 for (int i = 0; i <= lesscards; i++)
                     DellCard(Card);
-
+            }
                 printf("\nВаши карты: \n");
 
                 PrintCardHand(HandPlayer);
 
                 break;
-            break;
 
         case 1:
            
@@ -250,13 +249,11 @@ void Game(int Card[36][2], int HandPlayer[36][2], int HandBot[36][2])
                 
                 for (int i = 0; i <= lesscards; i++)
                     DellCard(Card);
-               
+            }
                 printf("\nВаши карты: \n");
-
                 PrintCardHand(HandPlayer);
                 
                 break;
-            }
         }
     }
 }
