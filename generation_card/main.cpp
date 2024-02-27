@@ -97,12 +97,26 @@ void IdentCard(int turnM, int turnC)
     }
 }
 
-void EnemyTurn(int HandBot[4][2])
+int CountCard(int HandPlayer[36][2])
+{
+    int n = 0;
+    for (int i; i < 36; i++)
+    {
+        if ((HandPlayer[i][0] != 0) && (HandPlayer[i][1] != 0))
+            n += 1;
+        else
+            break;
+    }
+    return n;
+}
+
+
+void EnemyTurn(int HandBot[36][2])
 {
 
 }
 
-int MyTurn(int HandPlayer[4][2], int HandBot[4][2])
+int MyTurn(int HandPlayer[36][2], int HandBot[36][2])
 {
     int choice[2];
     
@@ -124,7 +138,7 @@ int MyTurn(int HandPlayer[4][2], int HandBot[4][2])
         return 0;
 }
 
-void Game(int Card[36][2], int HandPlayer[4][2], int HandBot[4][2])
+void Game(int Card[36][2], int HandPlayer[36][2], int HandBot[36][2])
 {
     bool IsGame = true;
 
@@ -165,6 +179,7 @@ void Game(int Card[36][2], int HandPlayer[4][2], int HandBot[4][2])
                 PlayerTurn = 1;
             else
                 PlayerTurn = 0;
+
         }
     }
 }
@@ -174,8 +189,8 @@ int main()
     system("chcp 1251");
     srand(time(NULL));
     int Card[36][2];
-    int HandPlayer[4][2];
-    int HandBot[4][2];
+    int HandPlayer[36][2];
+    int HandBot[36][2];
     
     Clear();
     Menu();
