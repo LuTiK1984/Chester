@@ -143,7 +143,7 @@ int CountCards(int HandPlayer[36][2])
     for (int i = 0; i < 36; i++)
     {
         if ((HandPlayer[i][0] > 0) && (HandPlayer[i][1] > 0))
-            n += 1;
+            n++;
         else
             break;
     }
@@ -158,10 +158,26 @@ void EnemyTurn(int HandBot[36][2])
 
 int MyTurn(int choice[2], int HandBot[36][2])
 {
-    if ((choice[0] == HandBot[0][0] || choice[0] == HandBot[1][0] || choice[0] == HandBot[2][0] || choice[0] == HandBot[3][0]) && (choice[1] == HandBot[0][1] || choice[1] == HandBot[1][1] || choice[1] == HandBot[2][1] || choice[1] == HandBot[3][1]))
-        return 1;
-    else
-        return 0;
+    for (int i = 0; i < 36; i++)
+    {
+        if ((choice[0] == HandBot[i][0]) && (choice[1] == HandBot[i][1]))
+            return 1;
+        else
+            return 0;
+    }
+}
+
+void FillHand(int Card[36][2], int HandBot[36][2])
+{
+    int MyHandCount = CountCards(HandBot);
+    
+    while (MyHandCount < 4)
+    {
+
+        DistOfCard(Card, HandBot, 1);
+        DellCard(Card);
+        MyHandCount++;
+    }
 }
 
 void Game(int Card[36][2], int HandPlayer[36][2], int HandBot[36][2])
@@ -200,9 +216,12 @@ void Game(int Card[36][2], int HandPlayer[36][2], int HandBot[36][2])
         int turnC;
 
         case 0:
-    printf("\nВаши карты: \n");
-    
-    PrintCardHand(HandPlayer);
+            FillHand(Card, HandPlayer);
+            printf("\n%i\n", CountCards(HandBot));
+            printf("\nВаши карты и карты врага: \n");
+            PrintCardHand(HandPlayer);
+            printf("\n");
+            PrintCardHand(HandBot);
             
             printf("\n\nХодит ваш противник!");
 
@@ -225,43 +244,31 @@ void Game(int Card[36][2], int HandPlayer[36][2], int HandBot[36][2])
                     {
                         HandPlayer[i][0] = 0;
                         HandPlayer[i][1] = 0;
-                        break;
                     }
                 }
-
+                
                 for (int i = 0; i < 36; i++)
                 {
                     if ((HandBot[i][0] <= 0) && (HandBot[i][1] <= 0))
                     {
                         HandBot[i][0] = choice[0];
                         HandBot[i][1] = choice[1];
+                        break;
                     }
                 }
 
             }
 
-            else
-                PlayerTurn = 1;
-            MyHandCount = CountCards(HandBot);
-            if (MyHandCount < 4)
-            {
-                int lesscards = 4 - MyHandCount;
-
-                DistOfCard(Card, HandBot, 4);
-
-                for (int i = 0; i <= lesscards; i++)
-                    DellCard(Card);
-            }
-                printf("\nВаши карты: \n");
-
-                PrintCardHand(HandPlayer);
 
                 break;
 
         case 1:
-           
-                printf("\nВаши карты: \n");
+            FillHand(Card, HandBot);
+            printf("\n%i\n",CountCards(HandBot));
+                printf("\nВаши карты и карты врага: \n");
                 PrintCardHand(HandPlayer);
+                printf("\n");
+                PrintCardHand(HandBot);
             printf("\n\nВаш ход! Выберите масть (введите от 1 до 4 - Черви, Пики, Крести, Буби) \nи карту (от 6 до 10 или 11 - валет, 12-Дама, 13- Король, 14 - Туз): ");
 
             scanf_s("%i %i", &turnM, &turnC);
@@ -283,35 +290,22 @@ void Game(int Card[36][2], int HandPlayer[36][2], int HandBot[36][2])
                     {
                         HandBot[i][0] = 0;
                         HandBot[i][1] = 0;
-                        break;
+                        
                     }
                 }
 
                 for (int i = 0; i < 36; i++)
                 {
-                    if ((HandPlayer[i][0] == 0) && (HandPlayer[i][1] == 0))
+                    if ((HandPlayer[i][0] <= 0) && (HandPlayer[i][1] <= 0))
                     {
                         HandPlayer[i][0] = choice[0];
                         HandPlayer[i][1] = choice[1];
+                        break;
                     }
                 }
 
             }
-
-            else
-                PlayerTurn = 0;
-
-            MyHandCount = CountCards(HandPlayer);
-            if (MyHandCount < 4)
-            {
-                int lesscards = 4 - MyHandCount;
-                
-                DistOfCard(Card,HandPlayer,4);
-                
-                for (int i = 0; i <= lesscards; i++)
-                    DellCard(Card);
-            }
-                
+            
                 break;
         }
     }

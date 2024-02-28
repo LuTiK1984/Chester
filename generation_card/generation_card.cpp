@@ -33,7 +33,7 @@ void PrintCardHand(int HandPlayer[36][2])
 {
     for (int i = 0; i < 36; i++)
     {
-        if ((HandPlayer[i][0] > 0)&& (HandPlayer[i][1] > 0))
+        if ((HandPlayer[i][0] > 0) && (HandPlayer[i][1] > 0))
             printf("%i %i\n", HandPlayer[i][0], HandPlayer[i][1]);
     }
 }
@@ -68,16 +68,6 @@ void RandCard(int Card[36][2])
     }
 }
 
-void DistOfCard(int Card[36][2], int HandPlayer[36][2], int n)
-{
-    for (int i = 0; i < n; i++)
-    {
-        HandPlayer[i][0] = Card[i][0];
-        HandPlayer[i][1] = Card[i][1];
-    }
-
-}
-
 void DellCard(int Card[36][2])
 {
     int n = 36;
@@ -91,6 +81,24 @@ void DellCard(int Card[36][2])
         Card[n-1][0] = 0;
         Card[n-1][1] = 0;
 }
+
+void DistOfCard(int Card[36][2], int HandPlayer[36][2], int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < 36; j++)
+        {
+            if ((HandPlayer[j][0] <= 0) && (HandPlayer[j][1] <= 0))
+            {
+                HandPlayer[j][0] = Card[i][0];
+                HandPlayer[j][1] = Card[i][1];
+                break;
+            }
+        }
+    }
+
+}
+
 
 
 
